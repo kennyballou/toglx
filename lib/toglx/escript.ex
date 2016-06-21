@@ -15,4 +15,9 @@ defmodule Toglx.Escript do
       |> IO.inspect
   end
 
+  def run(%{cmd: "discard"}) do
+    Toglx.submit_discard_event
+      |> IO.inspect
+  end
+
 end

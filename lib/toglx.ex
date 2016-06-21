@@ -24,6 +24,15 @@ defmodule Toglx do
     end
   end
 
+  def submit_discard_event do
+    case current do
+      %{data: nil} -> :ok
+      %{data: %{id: time_entry_id}} ->
+        create_togglex_client
+          |> Togglex.Api.TimeEntries.delete(time_entry_id)
+    end
+  end
+
   def current do
     create_togglex_client
       |> Togglex.Api.TimeEntries.current
