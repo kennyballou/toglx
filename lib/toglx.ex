@@ -33,6 +33,17 @@ defmodule Toglx do
     end
   end
 
+  def submit_continue_event do
+    case current do
+      %{data: nil} -> list |> List.last |> continue
+      _ -> :ok
+    end
+  end
+
+  defp continue(%{description: task_name}) do
+    submit_start_event(task_name)
+  end
+
   def current do
     create_togglex_client
       |> Togglex.Api.TimeEntries.current

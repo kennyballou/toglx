@@ -20,4 +20,9 @@ defmodule Toglx.Escript do
       |> IO.inspect
   end
 
+  def run(%{cmd: "continue"}) do
+    Toglx.submit_continue_event
+      |> IO.inspect
+  end
+
 end
